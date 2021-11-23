@@ -32,7 +32,7 @@ Order_Item.init(
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'order_item'
