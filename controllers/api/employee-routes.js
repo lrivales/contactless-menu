@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
     Employee.create(
         {
             first_name: req.body.first_name,
-            last_name: req.body.last_name,
+            last_name: req.body.last_name
         }
     )
     .then(dbEmployeeData => res.json(dbEmployeeData))
@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
     Employee.update(
         {
             first_name: req.body.first_name,
-            last_name: req.body.last_name,
+            last_name: req.body.last_name
         },
         {
             where: {
