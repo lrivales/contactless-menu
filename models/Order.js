@@ -15,6 +15,11 @@ Order.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        completed: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 0
+        },
         customer_id: {
             type: DataTypes.INTEGER,
             references: {

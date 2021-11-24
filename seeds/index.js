@@ -4,6 +4,7 @@ const seedEmployees = require('./employee-seeds');
 const seedMenuCategories = require('./menu_category-seeds');
 const seedMenuItems = require('./menu_item-seeds');
 const seedOrders = require('./order-seeds');
+const seedOrderItems = require('./order_item-seeds');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -23,6 +24,9 @@ const seedAll = async () => {
 
   await seedOrders();
   console.log('\n----- ORDERS SEEDED -----\n');
+
+  await seedOrderItems();
+  console.log('\n----- ORDER ITEMS SEEDED -----\n');
 
   process.exit(0);
 };

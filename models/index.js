@@ -29,8 +29,18 @@ Menu_Item.belongsTo(Menu_Category, {
     foreignKey: 'category_id'
 });
 
-Order.hasMany(Order_Item, {
+Order.belongsToMany(Menu_Item, {
+    through: Order_Item,
     foreignKey: 'order_id'
+});
+
+Menu_Item.belongsToMany(Order, {
+    through: Order_Item,
+    foreignKey: 'menu_item_id'
+});
+
+Order_Item.belongsTo(Menu_Item, {
+    foreignKey: 'menu_item_id'
 });
 
 Order_Item.belongsTo(Order, {

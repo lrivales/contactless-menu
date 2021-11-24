@@ -2,8 +2,8 @@ const { Menu_Item } = require('../models');
 
 const menuItemData = [
     {
-      "name": "Nachos",
-      "description": "Cheesy nachos with choice of meat.",
+      "name": "Buffalo Wings",
+      "description": "Spicy giant wings.",
       "category_id": 1
     },
     {

@@ -3,15 +3,18 @@ const { Employee } = require('../models/');
 const employeeData = [
   {
     "first_name": "Lawrence",
-    "last_name": "Rivales"
+    "last_name": "Rivales",
+    "password": "password"
   },
   {
     "first_name": "Nadine",
-    "last_name": "Paez Andrade"
+    "last_name": "Paez Andrade",
+    "password": "password"
   },
   {
     "first_name": "Chad",
-    "last_name": "Aldrich"
+    "last_name": "Aldrich",
+    "password": "password"
   }
 ]
 
