@@ -49,6 +49,30 @@ router.post('/', (req, res) => {
     });
 });
 
+// employee login by id
+router.post('/login', (req, res) => {
+    Employee.findOne(
+        {
+            where: {
+                id: req.body.id,
+            }
+        }
+    ).then(dbEmployeeData => {
+        if(!dbEmployeeData) {
+            res.status(400).json({ message: 'No ID found!'});
+            return;
+        }
+
+        const validatePassword = dbEmployeeData.checkPassword(req.body.password);
+        
+        if (!validatePassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+            res.json({ employee: dbEmployeeData, message: 'You are now logged in!' });
+    });
+});
+
 // update employee
 router.put('/:id', (req, res) => {
     Employee.update(

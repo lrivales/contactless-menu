@@ -9,7 +9,11 @@ async function hashPassword(password) {
     return hashedPassword;
 }
 
-class Employee extends Model {}
+class Employee extends Model {
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 Employee.init(
     {
