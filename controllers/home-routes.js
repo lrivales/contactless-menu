@@ -10,4 +10,9 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+//login handlebars page
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
 module.exports = router;
