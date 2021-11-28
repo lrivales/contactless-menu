@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { where } = require('sequelize/dist');
 const { Customer, Employee, Menu_Category, Menu_Item, Order_Item, Order } = require('../../models');
 
 // get all order items 

@@ -38,7 +38,8 @@ router.post('/', (req, res) => {
     Employee.create(
         {
             first_name: req.body.first_name,
-            last_name: req.body.last_name
+            last_name: req.body.last_name,
+            password: req.body.password
         }
     )
     .then(dbEmployeeData => res.json(dbEmployeeData))
@@ -48,14 +49,40 @@ router.post('/', (req, res) => {
     });
 });
 
+// employee login by id
+router.post('/login', (req, res) => {
+    Employee.findOne(
+        {
+            where: {
+                id: req.body.id,
+            }
+        }
+    ).then(dbEmployeeData => {
+        if(!dbEmployeeData) {
+            res.status(400).json({ message: 'No ID found!'});
+            return;
+        }
+
+        const validatePassword = dbEmployeeData.checkPassword(req.body.password);
+        
+        if (!validatePassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+            res.json({ employee: dbEmployeeData, message: 'You are now logged in!' });
+    });
+});
+
 // update employee
 router.put('/:id', (req, res) => {
     Employee.update(
         {
             first_name: req.body.first_name,
-            last_name: req.body.last_name
+            last_name: req.body.last_name,
+            password: req.body.password
         },
         {
+            individualHooks: true,
             where: {
                 id: req.params.id
             }
