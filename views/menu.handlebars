@@ -10,7 +10,21 @@
                     <p class='item-title'>{{name}}</p>
                     <p class='description'>{{description}}</p>
                 </div>
-                <i class="gg-add-r"></i>
+                <div class='d-flex justify-content-between'>
+                    <div class='quantity-input'>
+                        <label for="quantity">Quantity:</label>
+                        <select id='quantity' name='quantity'>
+                            <option value=""></option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
+                    </div>
+                    <i class="gg-add-r add-to-order" id={{id}}></i>
+                </div>
+
             </div>
             {{/each}}
         </div>

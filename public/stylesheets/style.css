@@ -86,6 +86,14 @@ footer p {
   margin-bottom: 0;
 }
 
+.quantity-input {
+  display: block;
+}
+
+.quantity-input select {
+  margin: 0 15px 0 5px;
+}
+
 #menu-header {
   font-size: 20px;
   margin-top: 60px;
