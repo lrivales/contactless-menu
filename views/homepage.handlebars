@@ -1,6 +1,19 @@
-<h1>Contactless Ordering</h1>
-<p class="lead">Use this app to order your food contactless. To get started, find your table number on your table and
-    click the button below.</p>
-<p class="lead">
-    <a href="/menu" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Start Order</a>
-</p>
+<div id='homepage'>
+    <h1>Contactless Ordering</h1>
+    <p class="lead">Use this app to order your food contactless. To get started, find your table number on your table
+        and
+        click the button below.</p>
+    <label for="table-number">Select Your Table Number:</label>
+    <select id='table-number' name='table-number'>
+        <option value=""></option>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+    </select>
+    <p class="lead">
+        <a href="/menu" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Start Order</a>
+    </p>
+    <p id='start-order-error'>Please select your table number!</p>
+</div>

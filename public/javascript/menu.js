@@ -38,25 +38,25 @@ function addToOrder(event) {
     event.target.previousElementSibling.children[1].selectedIndex = 0;
 }
 
-function checkIfInOrder(id) {
-    const array = JSON.parse(localStorage.getItem('order'));
-    if (!array) {
-        return false;
-    }
+// function checkIfInOrder(id) {
+//     const array = JSON.parse(localStorage.getItem('order'));
+//     if (!array) {
+//         return false;
+//     }
 
-    for(i=0; i < array.length; i++) {
-        if(array[i].id === id) {
-            return true;
-        }
-    }
+//     for(i=0; i < array.length; i++) {
+//         if(array[i].id === id) {
+//             return true;
+//         }
+//     }
 
-    return false;
-}
+//     return false;
+// }
 
-function loadOrderItems() {
-    const storedOrder = JSON.parse(localStorage.getItem('order'));
-    storedOrder.forEach(item => orderInfo.push(item));
-}
+// function loadOrderItems() {
+//     const storedOrder = JSON.parse(localStorage.getItem('order'));
+//     storedOrder.forEach(item => orderInfo.push(item));
+// }
 
 menuCategoryListEl.forEach(item => {
     item.addEventListener('click', showMenuItems);
@@ -66,4 +66,4 @@ addToOrderEl.forEach(item => {
     item.addEventListener('click', addToOrder);
 })
 
-loadOrderItems();
+// loadOrderItems();
