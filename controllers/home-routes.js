@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+router.get('/menu', (req, res) => {
+  res.render('menu');
+});
+
 //login handlebars page
 router.get('/login', (req, res) => {
   res.render('login');
