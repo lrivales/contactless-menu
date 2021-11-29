@@ -8,6 +8,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href="list-groups.css" rel="stylesheet">
   <link href='https://css.gg/add-r.css' rel='stylesheet'>
+  <link href='https://css.gg/shopping-cart.css' rel='stylesheet'>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Contactless Menu</title>
 </head>
@@ -17,9 +18,12 @@
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="mb-auto">
       <div>
-        <h3 class="float-md-start mb-0">Contactless Menu</h3>
+        <a href='/'>
+          <h3 class="float-md-start mb-0">Contactless Menu</h3>
+        </a>
         <nav class="nav nav-masthead justify-content-center float-md-end">
-          <a class="nav-link" href="/login">Employee login</a>
+
+          <i class="gg-shopping-cart"></i>
         </nav>
       </div>
     </header>
@@ -29,7 +33,10 @@
     </main>
 
     <footer class="mt-auto text-white-50">
-      <p>Thanks for visiting</p>
+      <div class='d-flex justify-content-between align-items-center'>
+        <p>Thanks for visiting</p> |
+        <a class="nav-link" href="/login">Employee login</a>
+      </div>
     </footer>
   </div>
 

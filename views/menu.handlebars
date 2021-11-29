@@ -1,88 +1,20 @@
-<div class='container'>
+<h2 id='menu-header'>Select a category to view the available items and add them to your cart:</h2>
+<div class='container menu'>
+    {{#each menu}}
     <div class='menu-category'>
-        <h2>Appetizers</h2>
+        <h2>{{name}}</h2>
         <div class='menu-item-container'>
+            {{#each menu_items}}
             <div class='menu-item'>
-                <p>Shrimp Cocktail</p>
+                <div class='d-flex flex-column justify-content-center item-info'>
+                    <p class='item-title'>{{name}}</p>
+                    <p class='description'>{{description}}</p>
+                </div>
                 <i class="gg-add-r"></i>
             </div>
-            <div class='menu-item'>
-                <p>Mozzarella Sticks</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Buffalo Wings</p>
-                <i class="gg-add-r"></i>
-            </div>
+            {{/each}}
         </div>
     </div>
-    <div class='menu-category'>
-        <h2>Entrees</h2>
-        <div class='menu-item-container'>
-            <div class='menu-item'>
-                <p>Shrimp Cocktail</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Mozzarella Sticks</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Buffalo Wings</p>
-                <i class="gg-add-r"></i>
-            </div>
-        </div>
-    </div>
-    <div class='menu-category'>
-        <h2>Sides</h2>
-        <div class='menu-item-container'>
-            <div class='menu-item'>
-                <p>Shrimp Cocktail</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Mozzarella Sticks</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Buffalo Wings</p>
-                <i class="gg-add-r"></i>
-            </div>
-        </div>
-    </div>
-    <div class='menu-category'>
-        <h2>Desserts</h2>
-        <div class='menu-item-container'>
-            <div class='menu-item'>
-                <p>Shrimp Cocktail</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Mozzarella Sticks</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Buffalo Wings</p>
-                <i class="gg-add-r"></i>
-            </div>
-        </div>
-    </div>
-    <div class='menu-category'>
-        <h2>Drinks</h2>
-        <div class='menu-item-container'>
-            <div class='menu-item'>
-                <p>Shrimp Cocktail</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Mozzarella Sticks</p>
-                <i class="gg-add-r"></i>
-            </div>
-            <div class='menu-item'>
-                <p>Buffalo Wings</p>
-                <i class="gg-add-r"></i>
-            </div>
-        </div>
-    </div>
+    {{/each}}
 </div>
 <script src='/javascript/menu.js'></script>

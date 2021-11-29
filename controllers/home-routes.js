@@ -11,7 +11,25 @@ router.get('/', (req, res) => {
 });
 
 router.get('/menu', (req, res) => {
-  res.render('menu');
+  Menu_Category.findAll({
+    include: [
+      {
+        model: Menu_Item,
+        attributes: ['id', 'name', 'description', 'category_id']
+      }
+    ]
+  })
+    .then(dbMenuData => {
+      const menu = dbMenuData.map(item => item.get({ plain: true }));
+      res.render('menu', {
+        menu
+      })
+      // res.json(dbMenuData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 //login handlebars page
@@ -22,49 +40,49 @@ router.get('/login', (req, res) => {
 //send orders by employee to orders.handlebars page - use node fetch here?
 router.get('/orders', (req, res) => {
   res.render('orders', {
-      id: 1,
-      table_number: 1,
-      completed: false,
-      customer_id: 1,
-      employee_id: 1,
-      createdAt: "2021-11-25T00:55:46.000Z",
-      updatedAt: "2021-11-25T00:55:46.000Z",
-      customer: {
-        first_name: "Jack",
-        last_name: "Pott"
-      },
-      employee: {
-        first_name: "Lawrence",
-        last_name: "Rivales"
-      }
+    id: 1,
+    table_number: 1,
+    completed: false,
+    customer_id: 1,
+    employee_id: 1,
+    createdAt: "2021-11-25T00:55:46.000Z",
+    updatedAt: "2021-11-25T00:55:46.000Z",
+    customer: {
+      first_name: "Jack",
+      last_name: "Pott"
+    },
+    employee: {
+      first_name: "Lawrence",
+      last_name: "Rivales"
+    }
   })
-//   Order.findAll(
-//     {
-//         where: {
-//             employee_id: req.params.employee_id
-//         },
-//         include: [
-//             {
-//                 model: Customer,
-//                 attributes: ['first_name', 'last_name']
-//             },
-//             {
-//                 model: Employee,
-//                 attributes: ['first_name', 'last_name']
-//             }
-//         ]
-//     }
-// )
-// .then(dbOrderData => {
-//   // is order.get correct here?
-//   const orders = dbOrderData.map(order.get({ plain: true}));
-//   res.render('orders', { orders });
-// })
-// .catch(err => {
-//     console.log(err);
-//     res.status(500).json(err);
-// });
-  
+  //   Order.findAll(
+  //     {
+  //         where: {
+  //             employee_id: req.params.employee_id
+  //         },
+  //         include: [
+  //             {
+  //                 model: Customer,
+  //                 attributes: ['first_name', 'last_name']
+  //             },
+  //             {
+  //                 model: Employee,
+  //                 attributes: ['first_name', 'last_name']
+  //             }
+  //         ]
+  //     }
+  // )
+  // .then(dbOrderData => {
+  //   // is order.get correct here?
+  //   const orders = dbOrderData.map(order.get({ plain: true}));
+  //   res.render('orders', { orders });
+  // })
+  // .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  // });
+
 });
 
 module.exports = router;

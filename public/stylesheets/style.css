@@ -2,6 +2,23 @@
   box-sizing: border-box;
 }
 
+header h3 {
+  color: #fff;
+}
+
+footer div {
+  width: 40%;
+  margin: 0 auto;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+.menu {
+  margin-top: 20px;
+}
+
 .menu-category {
   margin-bottom: 30px;
 }
@@ -17,6 +34,7 @@
 
 .menu-category h2:hover {
   background-color: #8a8a8a;
+  cursor: default;
 }
 
 .menu-item {
@@ -27,7 +45,7 @@
   align-items: center;
 }
 
-.menu-item p {
+.item-title {
   width: 70%;
   text-align: left;
   font-size: 22px;
@@ -39,5 +57,36 @@
 }
 
 .gg-add-r:hover {
-  color: #8a8a8a
+  color: #8a8a8a;
+  cursor: pointer;
+}
+
+.gg-shopping-cart {
+  transform: scale(var(--ggs,1.5));
+  top: 6px;
+}
+
+.gg-shopping-cart:hover {
+  transform: scale(var(--ggs,1.7));
+  cursor: pointer;
+}
+
+.nav-link {
+  padding-left: 0;
+}
+
+.item-info {
+  width: 60%;
+}
+
+.description {
+  color: #8a8a8a;
+  font-size: 13px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+#menu-header {
+  font-size: 20px;
+  margin-top: 60px;
 }
