@@ -42,7 +42,14 @@ router.post('/', (req, res) => {
             password: req.body.password
         }
     )
-    .then(dbEmployeeData => res.json(dbEmployeeData))
+    .then(dbEmployeeData => {
+        console.log(dbEmployeeData.id);
+        req.session.save(() => {
+            req.session.user_id = dbEmployeeData.id
+            req.session.loggedIn = true;
+            res.json(dbEmployeeData);
+        });
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -64,13 +71,30 @@ router.post('/login', (req, res) => {
         }
 
         const validatePassword = dbEmployeeData.checkPassword(req.body.password);
+        console.log(validatePassword);
         
         if (!validatePassword) {
             res.status(400).json({ message: 'Incorrect password!' });
             return;
         }
+
+        req.session.save(() => {
+            req.session.user_id = dbEmployeeData.id;
+            req.session.loggedIn = true;
             res.json({ employee: dbEmployeeData, message: 'You are now logged in!' });
+        });
     });
+});
+
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+          res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 // update employee
