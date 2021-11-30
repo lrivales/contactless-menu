@@ -2,8 +2,6 @@ const menuCategoryListEl = document.querySelectorAll('.menu-category');
 const allMenuItems = document.querySelectorAll('.menu-item-container');
 const addToOrderEl = document.querySelectorAll('.add-to-order');
 
-const orderInfo = [];
-
 function showMenuItems(event) {
     if (event.target.tagName === 'H2') {
         allMenuItems.forEach(item => item.style.display = 'none');
@@ -13,28 +11,39 @@ function showMenuItems(event) {
     }
 }
 
-function addToOrder(event) {
-    const id = event.target.id;
+async function addToOrder(event) {
+    const menu_item_id = event.path[2].id;
     const quantity = event.target.previousElementSibling.children[1].value;
-    const name = event.target.parentElement.previousElementSibling.children[0].innerHTML;
-    console.log(event.target.previousElementSibling.children[1], id, quantity, name)
+    const order_id = localStorage.getItem('orderId');
+    const successMessage = event.path[2].nextElementSibling;
+
+    console.log(menu_item_id, quantity, order_id)
 
     if (!quantity){
         window.alert('Please select a number');
         return;
     }
 
-    const inOrder = checkIfInOrder(id); 
+    const response = await fetch('/api/order_items', {
+        method: 'POST',
+        body: JSON.stringify({
+            menu_item_id,
+            quantity,
+            order_id
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
-    if (!inOrder) {
-        orderInfo.push({id, name, quantity});
+    if (response.ok) {
+        successMessage.style.display = 'block';
+        setTimeout(() => { successMessage.style.display = 'none' }, 1000)
     }
     else {
-        window.alert('This item is already in your cart.');
-        return;
+        alert(response.statusText);
     }
 
-    localStorage.setItem('order', JSON.stringify(orderInfo));
     event.target.previousElementSibling.children[1].selectedIndex = 0;
 }
 

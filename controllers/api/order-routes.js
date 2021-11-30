@@ -56,7 +56,8 @@ router.post('/', (req, res) => {
         {
             table_number: req.body.table_number,
             customer_id: req.body.customer_id,
-            employee_id: req.body.employee_id
+            employee_id: req.body.employee_id, 
+            completed: req.body.completed
         }
     )
     .then(dbOrderData => res.json(dbOrderData))

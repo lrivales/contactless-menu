@@ -102,6 +102,10 @@ footer p {
   margin: 0 15px 0 5px;
 }
 
+.add-success {
+  display: none;
+}
+
 #menu-header {
   font-size: 20px;
   margin-top: 60px;

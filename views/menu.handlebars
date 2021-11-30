@@ -5,7 +5,7 @@
         <h2>{{name}}</h2>
         <div class='menu-item-container'>
             {{#each menu_items}}
-            <div class='menu-item'>
+            <div class='menu-item' id={{id}}>
                 <div class='d-flex flex-column justify-content-center item-info'>
                     <p class='item-title'>{{name}}</p>
                     <p class='description'>{{description}}</p>
@@ -22,9 +22,11 @@
                             <option value='5'>5</option>
                         </select>
                     </div>
-                    <i class="gg-add-r add-to-order" id={{id}}></i>
+                    <i class="gg-add-r add-to-order"></i>
                 </div>
-
+            </div>
+            <div class='add-success text-success'>
+                Added!
             </div>
             {{/each}}
         </div>
