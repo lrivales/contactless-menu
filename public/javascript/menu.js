@@ -37,11 +37,17 @@ async function addToOrder(event) {
     });
 
     if (response.ok) {
+        successMessage.innerHTML = 'Added!';
+        successMessage.style.color = '#39c900';
         successMessage.style.display = 'block';
         setTimeout(() => { successMessage.style.display = 'none' }, 1000)
     }
+    // change to base on error
     else {
-        alert(response.statusText);
+        successMessage.innerHTML = 'Already in cart!';
+        successMessage.style.color = '#ff0000';
+        successMessage.style.display = 'block';
+        setTimeout(() => { successMessage.style.display = 'none' }, 1000)
     }
 
     event.target.previousElementSibling.children[1].selectedIndex = 0;

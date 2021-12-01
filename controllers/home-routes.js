@@ -85,7 +85,12 @@ router.get('/orders', (req, res) => {
 
 });
 
-router.get('/cart', (req, res) => {
+router.get('/cart/:id', (req, res) => {
+  Order.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
   res.render('cart');
 });
 

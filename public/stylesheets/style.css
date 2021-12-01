@@ -72,6 +72,7 @@ footer p {
 .gg-shopping-cart {
   transform: scale(var(--ggs,1.5));
   top: 6px;
+  color: #fff;
 }
 
 .gg-shopping-cart:hover {
@@ -106,6 +107,23 @@ footer p {
   display: none;
 }
 
+.cart-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.cart-container > * {
+  margin-top: 15px;
+}
+
+.cart-container p {
+  margin-bottom: 0;
+}
+
+.edit-item-cart {
+  width: 25%;
+}
+
 #menu-header {
   font-size: 20px;
   margin-top: 60px;
@@ -119,7 +137,7 @@ footer p {
   height: 30px;
 }
 
-#homepage{
+#homepage {
   margin-top: 50px;
 }
 
@@ -128,6 +146,11 @@ footer p {
 }
 
 #start-order-error {
-  color: red;
+  color: #ff0000;
   display: none;
+}
+
+#cart-btn {
+  border: none;
+  background: none;
 }
