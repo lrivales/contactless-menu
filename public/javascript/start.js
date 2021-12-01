@@ -9,7 +9,7 @@ async function createOrder() {
     if (!table_number) {
         errorMessage.style.display = 'block';
 
-        setTimeout(() => { errorMessage.style.display = 'none' }, 3000)
+        setTimeout(() => { errorMessage.style.display = 'none' }, 2000)
         return;
     }
 

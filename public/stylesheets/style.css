@@ -108,12 +108,17 @@ footer p {
 }
 
 .cart-container {
-  width: 60%;
+  width: 30%;
   margin: 0 auto;
 }
 
 .cart-container > * {
   margin-top: 15px;
+}
+
+.cart-container h2 {
+  font-size: 25px;
+  margin-bottom: 0;
 }
 
 .cart-container p {
@@ -122,6 +127,14 @@ footer p {
 
 .edit-item-cart {
   width: 25%;
+}
+
+.cart-quantity {
+  margin-right: 30px;
+}
+
+.edit-cart-btn {
+  margin-right: 10px;
 }
 
 #menu-header {
@@ -153,4 +166,8 @@ footer p {
 #cart-btn {
   border: none;
   background: none;
+}
+
+#cart-submit {
+  margin-top: 30px;
 }
