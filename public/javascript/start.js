@@ -4,8 +4,6 @@ const errorMessage = document.querySelector('#start-order-error');
 async function createOrder() {
     const table_number = document.querySelector('#table-number').value;
     const employee_id = Math.floor(Math.random() * 3);
-    const completed = 0;
-
     const currentOrder = localStorage.getItem('orderId');
 
     if (!table_number) {
@@ -31,7 +29,6 @@ async function createOrder() {
         body: JSON.stringify({
             table_number,
             employee_id,
-            completed,
             customer_id: 1
         }),
         headers: {
