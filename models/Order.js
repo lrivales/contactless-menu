@@ -20,13 +20,13 @@ Order.init(
             allowNull: false,
             defaultValue: 0
         },
-        customer_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'customer',
-                key: 'id'
-            }
-        },
+        // customer_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'customer',
+        //         key: 'id'
+        //     }
+        // },
         employee_id: {
             type: DataTypes.INTEGER,
             references: {
