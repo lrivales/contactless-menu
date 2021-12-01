@@ -25,8 +25,22 @@ function editItem(event) {
     });
 }
 
-function deleteItem() {
+async function deleteItem(event) {
+    const order_id = localStorage.getItem('orderId');
+    const menu_item_id = event.path[2].id;
 
+    const confirmDelete = window.confirm('Are you sure you want to remove this item?');
+    console.log(menu_item_id, event);
+
+    if (confirmDelete) {
+        const response = await fetch(`/api/order_items/${order_id}/${menu_item_id}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            document.location.replace(`/cart/${order_id}`);
+        }
+    }
 }
 
 async function confirmEdit(order_id, menu_item_id, quantity) {
