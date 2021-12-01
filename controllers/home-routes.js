@@ -23,6 +23,10 @@ router.get('/login', (req, res) => {
 
 //send orders by employee to orders.handlebars page - use node fetch here?
 router.get('/orders', (req, res) => {
+  // fetch /api/orders/ to get all orders => orders
+  // then fetch /api/order_items/order_id to get all order items per order id
+  // render to the orders page
+
   // res.render('orders', {
   //     id: 1,
   //     table_number: 1,

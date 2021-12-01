@@ -13,6 +13,11 @@ router.get('/', (req, res) => {
                 {
                     model: Employee,
                     attributes: ['first_name', 'last_name']
+                },
+                {
+                    model: Menu_Item,
+                    attributes: ['name'],
+                    through: Order_Item,
                 }
             ]
         }
