@@ -1,14 +1,16 @@
 <h1>Cart</h1>
 <div class='cart-container'>
     {{#each orderItems}}
-    <div class='d-flex justify-content-between align-items-center'>
+    <div id={{menu_item_id}} class='d-flex justify-content-between align-items-center'>
         <h2>{{menu_item.name}}</h2>
-        <div class='d-flex justify-content-center align-items-center edit-item-cart'>
-            <p class="cart-quantity">{{quantity}}x</p>
+        <div class='d-flex justify-content-between align-items-center edit-item-cart'>
+            <p class="cart-quantity" quantity={{quantity}}>{{quantity}}x</p>
             <button type='button' class='edit-cart-btn'>Edit</button>
             <button type='button' class='delete-cart-btn'>Delete</button>
         </div>
     </div>
     {{/each}}
 </div>
+<a href='/menu'>Back to menu</a>
 <button type='submit' id='cart-submit'>Submit Order</button>
+<script src='/javascript/cart.js'></script>

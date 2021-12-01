@@ -137,6 +137,11 @@ footer p {
   margin-right: 10px;
 }
 
+.cart-quantity-input {
+  margin-right: 15px;
+  size: 50px;
+}
+
 #menu-header {
   font-size: 20px;
   margin-top: 60px;
