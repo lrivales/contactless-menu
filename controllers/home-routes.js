@@ -11,6 +11,28 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+router.get('/menu', (req, res) => {
+  Menu_Category.findAll({
+    include: [
+      {
+        model: Menu_Item,
+        attributes: ['id', 'name', 'description', 'category_id']
+      }
+    ]
+  })
+    .then(dbMenuData => {
+      const menu = dbMenuData.map(item => item.get({ plain: true }));
+      res.render('menu', {
+        menu
+      })
+      // res.json(dbMenuData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 //login handlebars page unless already logged in (session)
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -74,7 +96,14 @@ router.get('/orders', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-
 });
+
+router.get('/cart/:id', (req, res) => {
+  Order.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.render('cart');
 
 module.exports = router;
