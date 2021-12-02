@@ -1,9 +1,20 @@
-<nav class="nav nav-masthead justify-content-center float-md-end">
-    <a class="nav-link" href="/login">Employee login</a>
-</nav>
-<h1>Contactless Ordering</h1>
-<p class="lead">Use this app to order your food contactless. To get started, find your table number on your table and
-    click the button below.</p>
-<p class="lead">
-    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Start Order</a>
-</p>
+<div id='homepage'>
+    <h1>Contactless Ordering</h1>
+    <p class="lead">Use this app to order your food contactless. To get started, find your table number on your table
+        and
+        click the button below.</p>
+    <label for="table-number">Select Your Table Number:</label>
+    <select id='table-number' name='table-number'>
+        <option value=""></option>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+    </select>
+    <p id='start-order-error'>Please select your table number!</p>
+    <p class="lead">
+        <button class="btn btn-lg btn-secondary fw-bold border-white bg-black" id='start-order-btn'>Start Order</button>
+    </p>
+</div>
+<script src='/javascript/start.js'></script>

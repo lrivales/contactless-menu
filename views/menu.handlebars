@@ -1,0 +1,35 @@
+<h2 id='menu-header'>Select a category to view the available items and add them to your cart:</h2>
+<div class='container menu'>
+    {{#each menu}}
+    <div class='menu-category'>
+        <h2>{{name}}</h2>
+        <div class='menu-item-container'>
+            {{#each menu_items}}
+            <div class='menu-item' id={{id}}>
+                <div class='d-flex flex-column justify-content-center item-info'>
+                    <p class='item-title'>{{name}}</p>
+                    <p class='description'>{{description}}</p>
+                </div>
+                <div class='d-flex justify-content-between'>
+                    <div class='quantity-input'>
+                        <label for="quantity">Quantity:</label>
+                        <select id='quantity' name='quantity'>
+                            <option value=""></option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
+                    </div>
+                    <i class="gg-add-r add-to-order"></i>
+                </div>
+            </div>
+            <div class='add-success'>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+<script src='/javascript/menu.js'></script>
