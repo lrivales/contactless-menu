@@ -24,26 +24,11 @@ router.get('/login', (req, res) => {
 //send orders by employee to orders.handlebars page - use node fetch here?
 router.get('/orders', (req, res) => {
   // res.render('orders', {
-  //     id: 1,
-  //     table_number: 1,
-  //     completed: false,
-  //     customer_id: 1,
-  //     employee_id: 1,
-  //     createdAt: "2021-11-25T00:55:46.000Z",
-  //     updatedAt: "2021-11-25T00:55:46.000Z",
-  //     customer: {
-  //       first_name: "Jack",
-  //       last_name: "Pott"
-  //     },
-  //     employee: {
-  //       first_name: "Lawrence",
-  //       last_name: "Rivales"
-  //     }
-  // })
+
   if (!req.session.user_id) {
     return res.redirect('/login');
   }
-
+console.log('orders view');
   Order.findAll({
     where: {
       employee_id: req.session.user_id
@@ -61,6 +46,7 @@ router.get('/orders', (req, res) => {
   }
   )
     .then(dbOrderData => {
+      console.log('another orders view', dbOrderData)
       // is order.get correct here?
       const orders = dbOrderData.map(order => order.get({ plain: true }));
       console.log(orders)

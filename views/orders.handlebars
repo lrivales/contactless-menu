@@ -5,11 +5,11 @@
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     {{!-- loop over each order --}}
     {{!-- HOW TO ADD ORDER INFO HERE USING {{}}??? --}}
-    {{!-- {{#each orders as |order|}} --}}
-    <div class="col order-card">
+    {{#each orders as |order|}}
+    <div data-ordercard={{order.id}} class="col order-card">
       <div class="card mb-4 rounded-3 shadow-sm text-dark">
         <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">Order Number: {{id}}</h4>
+          <h4 class="my-0 fw-normal">Order Number: {{order.id}}</h4>
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-3 mb-4">
@@ -19,11 +19,11 @@
             <li>order item 3</li>
             <li>order item 4</li>
           </ul>
-          <button type="button" class=" delete w-100 btn btn-lg btn-outline-primary">Order finished</button>
+          <button data-orderid={{order.id}} type="button" class="w-100 btn btn-lg btn-outline-primary">Order finished</button>
         </div>
       </div>
     </div>
-    {{!-- {{/each}} --}}
+    {{/each}}
 
     {{!-- hard coded for testing --}}
     <div class="col">
