@@ -67,13 +67,17 @@ console.log('orders view');
       {
         model: Employee,
         attributes: ['first_name', 'last_name']
-      }
+      },
+      {
+        model: Menu_Item,
+        attributes: ['name'],
+        through: Order_Item,
+    }
     ]
   }
   )
     .then(dbOrderData => {
       console.log('another orders view', dbOrderData)
-      // is order.get correct here?
       const orders = dbOrderData.map(order => order.get({ plain: true }));
       console.log(orders)
       res.render('orders', { orders });

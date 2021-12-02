@@ -10,70 +10,22 @@
       <div class="card mb-4 rounded-3 shadow-sm text-dark">
         <div class="card-header py-3">
           <h4 class="my-0 fw-normal">Order Number: {{order.id}}</h4>
+          <h5 class="my-0 fw-normal">Table Number: {{order.table_number}}</h5>
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-3 mb-4">
-            {{!-- use hbr expressions here --}}
-            <li>order item 1</li>
-            <li>order item 2</li>
-            <li>order item 3</li>
-            <li>order item 4</li>
+            {{#each orders as |order|}}
+            <li>
+              {{order.menu_items}}
+            </li>
+            {{/each}}
           </ul>
-          <button data-orderid={{order.id}} type="button" class="w-100 btn btn-lg btn-outline-primary">Order finished</button>
+          <button data-orderid={{order.id}} type="button" class="w-100 btn btn-lg btn-outline-primary">Order
+            finished</button>
         </div>
       </div>
     </div>
     {{/each}}
-
-    {{!-- hard coded for testing --}}
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm text-dark">
-        <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">Order Number 2</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>order item 1</li>
-            <li>order item 2</li>
-            <li>order item 3</li>
-            <li>order item 4</li>
-          </ul>
-          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Order finished</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm border-primary text-dark">
-        <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">Order Number 3</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>order item 1</li>
-            <li>order item 2</li>
-            <li>order item 3</li>
-            <li>order item 4</li>
-          </ul>
-          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Order finished</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm text-dark">
-        <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">Order Number 4</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>order item 1</li>
-            <li>order item 2</li>
-            <li>order item 3</li>
-            <li>order item 4</li>
-          </ul>
-          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Order finished</button>
-        </div>
-      </div>
-    </div>
   </div>
 
 
