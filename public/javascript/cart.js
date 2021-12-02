@@ -1,10 +1,11 @@
 const editButton = document.querySelectorAll('.edit-cart-btn');
 const deleteButton = document.querySelectorAll('.delete-cart-btn');
+const submitCartBtn = document.querySelector('#cart-submit');
 
 function editItem(event) {
     const order_id = localStorage.getItem('orderId');
     const menu_item_id = event.path[2].id;
-    const quantityPEl = event.target.parentElement.children[0];
+    const quantityPEl = event.target.parentElement.parentElement.children[0].children[1];
 
     const quantityInput = document.createElement('select');
     quantityInput.type = 'select';
@@ -30,7 +31,6 @@ async function deleteItem(event) {
     const menu_item_id = event.path[2].id;
 
     const confirmDelete = window.confirm('Are you sure you want to remove this item?');
-    console.log(menu_item_id, event);
 
     if (confirmDelete) {
         const response = await fetch(`/api/order_items/${order_id}/${menu_item_id}`, {
@@ -59,5 +59,12 @@ async function confirmEdit(order_id, menu_item_id, quantity) {
     }
 }
 
+function submitCart(event) {
+    event.preventDefault();
+    localStorage.removeItem('orderId');
+    document.location.replace('/');
+}
+
 editButton.forEach(btn => btn.addEventListener('click', editItem));
 deleteButton.forEach(btn => btn.addEventListener('click', deleteItem));
+submitCartBtn.addEventListener('click', submitCart);

@@ -1,11 +1,15 @@
 const cartButton = document.querySelector('#cart-btn');
 const pathName = document.location.pathname.split('/')[1];
 const orderId = localStorage.getItem('orderId');
+const cartAlert = document.querySelector('#cart-alert');
 let click = false;
 
-async function checkOrderItems () {
+async function checkOrderItems() {
     if (!orderId) {
-        window.alert('Start an order');
+        cartAlert.innerHTML = 'Start an order!';
+        setTimeout(() => {
+            cartAlert.innerHTML = '';
+        }, 2000)
         return;
     }
 
@@ -20,7 +24,10 @@ async function checkOrderItems () {
         response.json().then(data => {
             console.log(data);
             if (Object.keys(data).length === 0) {
-                window.alert('Please add to order');
+                cartAlert.innerHTML = 'Cart is empty!';
+                setTimeout(() => {
+                    cartAlert.innerHTML = '';
+                }, 2000)
             } else {
                 cartButton.href = `/cart/${orderId}`;
                 if (!click) {

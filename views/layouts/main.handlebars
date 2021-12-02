@@ -17,14 +17,15 @@
 
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="mb-auto">
-      <div>
+      <div class='d-flex justify-content-between align-items-center'>
         <a href='/'>
           <h3 class="float-md-start mb-0">Contactless Menu</h3>
         </a>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
+        <nav class="nav nav-masthead d-flex flex-column justify-content-center align-items-center float-md-end">
           <a id='cart-btn'>
             <i class="gg-shopping-cart"></i>
           </a>
+          <p id='cart-alert'></p>
         </nav>
       </div>
     </header>
@@ -35,11 +36,13 @@
 
     <footer class="text-white-50">
       <div class='d-flex flex-column justify-content-between align-items-center'>
-        <p>Thanks for visiting</p> 
+        <p>Thanks for visiting</p>
         <a class="nav-link" href="/login">Employee login</a>
       </div>
     </footer>
   </div>
+
   <script src='/javascript/main.js'></script>
 </body>
+
 </html>
