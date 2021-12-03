@@ -97,6 +97,18 @@ router.post('/logout', (req, res) => {
     }
 });
 
+//logout employee
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+    else {
+      res.status(404).end();
+    }
+  });
+
 // update employee
 router.put('/:id', (req, res) => {
     Employee.update(

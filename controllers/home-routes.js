@@ -2,13 +2,13 @@ const router = require('express').Router();
 //import modules and models
 const sequelize = require('../config/connection');
 const { Customer, Employee, Menu_Category, Menu_Item, Order_Item, Order } = require('../models');
-//import node fetch
-const fetch = require('node-fetch');
 
 //specify which template to use
 router.get('/', (req, res) => {
   console.log(req.session);
-  res.render('homepage');
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 router.get('/menu', (req, res) => {
@@ -40,36 +40,16 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 //send orders by employee to orders.handlebars page - use node fetch here?
 router.get('/orders', (req, res) => {
-  // fetch /api/orders/ to get all orders => orders
-  // then fetch /api/order_items/order_id to get all order items per order id
-  // render to the orders page
-
-  // res.render('orders', {
-  //     id: 1,
-  //     table_number: 1,
-  //     completed: false,
-  //     customer_id: 1,
-  //     employee_id: 1,
-  //     createdAt: "2021-11-25T00:55:46.000Z",
-  //     updatedAt: "2021-11-25T00:55:46.000Z",
-  //     customer: {
-  //       first_name: "Jack",
-  //       last_name: "Pott"
-  //     },
-  //     employee: {
-  //       first_name: "Lawrence",
-  //       last_name: "Rivales"
-  //     }
-  // })
   if (!req.session.user_id) {
     return res.redirect('/login');
   }
-
   Order.findAll({
     where: {
       employee_id: req.session.user_id
@@ -82,15 +62,19 @@ router.get('/orders', (req, res) => {
       {
         model: Employee,
         attributes: ['first_name', 'last_name']
-      }
+      },
+      {
+        model: Menu_Item,
+        attributes: ['name'],
+        through: Order_Item,
+    }
     ]
   }
   )
     .then(dbOrderData => {
-      // is order.get correct here?
       const orders = dbOrderData.map(order => order.get({ plain: true }));
       console.log(orders)
-      res.render('orders', { orders });
+      res.render('orders', { orders, loggedIn: req.session.loggedIn } );
     })
     .catch(err => {
       console.log(err);
