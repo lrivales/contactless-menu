@@ -9,7 +9,7 @@ if (currentOrder) {
 
 async function createOrder() {
     const table_number = document.querySelector('#table-number').value;
-    const employee_id = Math.floor(Math.random() * 3);
+    const employee_id = Math.floor(Math.random() * 3) + 1;
 
     if (!table_number) {
         errorMessage.style.display = 'block';
@@ -22,8 +22,7 @@ async function createOrder() {
         method: 'POST',
         body: JSON.stringify({
             table_number,
-            employee_id,
-            customer_id: 1
+            employee_id
         }),
         headers: {
             'Content-Type': 'application/json'
