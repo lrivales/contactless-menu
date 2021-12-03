@@ -2,13 +2,13 @@ const router = require('express').Router();
 //import modules and models
 const sequelize = require('../config/connection');
 const { Customer, Employee, Menu_Category, Menu_Item, Order_Item, Order } = require('../models');
-//import node fetch
-const fetch = require('node-fetch');
 
 //specify which template to use
 router.get('/', (req, res) => {
   console.log(req.session);
-  res.render('homepage');
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 router.get('/menu', (req, res) => {
@@ -40,14 +40,11 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
-/*node fetch version
-router.get('/orders', async (req, res) => {
-  await fetch('http://localhost:3001/api/orders/')
-  .then(res => res.json(res))*/ 
-  
 //send orders by employee to orders.handlebars page - use node fetch here?
 router.get('/orders', (req, res) => {
   if (!req.session.user_id) {
@@ -75,10 +72,9 @@ router.get('/orders', (req, res) => {
   }
   )
     .then(dbOrderData => {
-      console.log('another orders view', dbOrderData)
       const orders = dbOrderData.map(order => order.get({ plain: true }));
       console.log(orders)
-      res.render('orders', { orders });
+      res.render('orders', { orders, loggedIn: req.session.loggedIn } );
     })
     .catch(err => {
       console.log(err);
