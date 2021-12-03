@@ -43,18 +43,16 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+/*node fetch version
+router.get('/orders', async (req, res) => {
+  await fetch('http://localhost:3001/api/orders/')
+  .then(res => res.json(res))*/ 
+  
 //send orders by employee to orders.handlebars page - use node fetch here?
 router.get('/orders', (req, res) => {
-  // fetch /api/orders/ to get all orders => orders
-  // then fetch /api/order_items/order_id to get all order items per order id
-  // render to the orders page
-
-  // res.render('orders', {
-
   if (!req.session.user_id) {
     return res.redirect('/login');
   }
-console.log('orders view');
   Order.findAll({
     where: {
       employee_id: req.session.user_id

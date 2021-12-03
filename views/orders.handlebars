@@ -1,10 +1,7 @@
-{{!-- display all orders for specific employee --}}
-
 <main>
   {{!-- set up main layout --}}
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     {{!-- loop over each order --}}
-    {{!-- HOW TO ADD ORDER INFO HERE USING {{}}??? --}}
     {{#each orders as |order|}}
     <div data-ordercard={{order.id}} class="col order-card">
       <div class="card mb-4 rounded-3 shadow-sm text-dark">
@@ -14,11 +11,11 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-3 mb-4">
-            {{#each orders as |order|}}
+            {{#menu_items}}
             <li>
-              {{order.menu_items}}
+              {{order_item.quantity}} x {{name}}
             </li>
-            {{/each}}
+            {{/menu_items}}
           </ul>
           <button data-orderid={{order.id}} type="button" class="w-100 btn btn-lg btn-outline-primary">Order
             finished</button>
