@@ -17,10 +17,11 @@ async function addToOrder(event) {
     const order_id = localStorage.getItem('orderId');
     const successMessage = event.path[2].nextElementSibling;
 
-    console.log(menu_item_id, quantity, order_id)
-
     if (!quantity){
-        window.alert('Please select a number');
+        successMessage.innerHTML = 'Select a quantity!';
+        successMessage.style.color = '#ff0000';
+        successMessage.style.display = 'block';
+        setTimeout(() => { successMessage.style.display = 'none' }, 1000)
         return;
     }
 
@@ -53,26 +54,6 @@ async function addToOrder(event) {
     event.target.previousElementSibling.children[1].selectedIndex = 0;
 }
 
-// function checkIfInOrder(id) {
-//     const array = JSON.parse(localStorage.getItem('order'));
-//     if (!array) {
-//         return false;
-//     }
-
-//     for(i=0; i < array.length; i++) {
-//         if(array[i].id === id) {
-//             return true;
-//         }
-//     }
-
-//     return false;
-// }
-
-// function loadOrderItems() {
-//     const storedOrder = JSON.parse(localStorage.getItem('order'));
-//     storedOrder.forEach(item => orderInfo.push(item));
-// }
-
 menuCategoryListEl.forEach(item => {
     item.addEventListener('click', showMenuItems);
 });
@@ -80,5 +61,3 @@ menuCategoryListEl.forEach(item => {
 addToOrderEl.forEach(item => {
     item.addEventListener('click', addToOrder);
 })
-
-// loadOrderItems();

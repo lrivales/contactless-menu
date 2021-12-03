@@ -1,28 +1,22 @@
 const startOrderEl = document.querySelector('#start-order-btn');
+const continueOrderEl = document.querySelector('#continue-order-btn')
 const errorMessage = document.querySelector('#start-order-error');
+const currentOrder = localStorage.getItem('orderId');
+
+if (currentOrder) {
+    continueOrderEl.style.display = 'inline-block';
+}
 
 async function createOrder() {
     const table_number = document.querySelector('#table-number').value;
     const employee_id = Math.floor(Math.random() * 3);
-    const currentOrder = localStorage.getItem('orderId');
 
     if (!table_number) {
         errorMessage.style.display = 'block';
 
-        setTimeout(() => { errorMessage.style.display = 'none' }, 3000)
+        setTimeout(() => { errorMessage.style.display = 'none' }, 2000)
         return;
     }
-
-    if (currentOrder) {
-        const continueOrder = window.confirm('Would you like to continue your previous order?');
-
-        if (continueOrder) {
-            document.location.replace('/menu');
-            return;
-        }
-    }
-
-    console.log(table_number);
 
     const response = await fetch('/api/orders', {
         method: 'POST',
@@ -45,4 +39,9 @@ async function createOrder() {
     }
 }
 
+function continueOrder() {
+    document.location.replace('/menu');
+}
+
 startOrderEl.addEventListener('click', createOrder);
+continueOrderEl.addEventListener('click', continueOrder);
