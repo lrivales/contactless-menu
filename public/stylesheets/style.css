@@ -153,6 +153,19 @@ footer p {
   size: 50px;
 }
 
+.login-form, .signup-form {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.login-form > *, .signup-form > * {
+  margin-bottom: 5px;
+}
+
+.login-form button, .signup-form button {
+  margin-top: 10px;
+}
+
 #continue-order-btn {
    display: none;
 }
@@ -193,6 +206,13 @@ footer p {
   margin-left: 30px;
 }
 
+@media screen and (max-width: 1380px) {
+  .login-form, .signup-form {
+    width: 28%;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .menu-item {
     width: 65%;
@@ -204,6 +224,11 @@ footer p {
 
   .cart-item h2 {
     font-size: 20px;
+  }
+
+  .login-form, .signup-form {
+    width: 38%;
+    margin: 0 auto;
   }
 }
 
@@ -242,6 +267,11 @@ footer p {
   .edit-item-cart {
     align-items: center !important;
     justify-content: center !important;
+  }
+
+  .login-form, .signup-form {
+    width: 55%;
+    margin: 0 auto;
   }
 }
 
@@ -290,5 +320,25 @@ footer p {
 
   #cart-alert {
     font-size: 12px;
+  }
+
+  .login-form, .signup-form {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  main > * {
+    margin-bottom: 40px;
+  }
+
+  header {
+     margin-bottom: 20px !important; 
+  }
+
+  .login-form, .signup-form {
+    width: 100%;
+    margin: 0 auto 20px auto;
   }
 }
