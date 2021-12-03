@@ -83,13 +83,26 @@ router.get('/orders', (req, res) => {
 });
 
 router.get('/cart/:id', (req, res) => {
-  Order.findOne({
+  Order_Item.findAll({
     where: {
-      id: req.params.id
+      order_id: req.params.id
+    },
+    include: {
+      model: Order
+    },
+    include: {
+      model: Menu_Item
     }
   })
-  res.render('cart');
-
+    .then(dbOrderData => {
+      const orderItems = dbOrderData.map(order => order.get({ plain: true }));
+      res.render('cart', { orderItems });
+      // res.json(dbOrderData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
