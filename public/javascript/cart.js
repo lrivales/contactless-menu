@@ -10,7 +10,7 @@ function editItem(event) {
     const quantityInput = document.createElement('select');
     quantityInput.type = 'select';
 
-    for (i=1; i < 6; i++) {
+    for (i = 1; i < 6; i++) {
         const quantityOption = document.createElement('option');
         quantityOption.innerHTML = i;
         quantityInput.appendChild(quantityOption);
@@ -30,16 +30,12 @@ async function deleteItem(event) {
     const order_id = localStorage.getItem('orderId');
     const menu_item_id = event.path[2].id;
 
-    const confirmDelete = window.confirm('Are you sure you want to remove this item?');
+    const response = await fetch(`/api/order_items/${order_id}/${menu_item_id}`, {
+        method: 'DELETE'
+    });
 
-    if (confirmDelete) {
-        const response = await fetch(`/api/order_items/${order_id}/${menu_item_id}`, {
-            method: 'DELETE'
-        });
-
-        if (response.ok) {
-            document.location.replace(`/cart/${order_id}`);
-        }
+    if (response.ok) {
+        document.location.replace(`/cart/${order_id}`);
     }
 }
 

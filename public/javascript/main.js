@@ -22,7 +22,6 @@ async function checkOrderItems() {
 
     if (response.ok) {
         response.json().then(data => {
-            console.log(data);
             if (Object.keys(data).length === 0) {
                 cartAlert.innerHTML = 'Cart is empty!';
                 setTimeout(() => {
