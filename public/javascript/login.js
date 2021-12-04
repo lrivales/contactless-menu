@@ -29,23 +29,24 @@ document.querySelector('.login-form').addEventListener('submit', loginFormHandle
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const firstname = document.querySelector('#firstname-signup').value.trim();
-    const lastname = document.querySelector('#lastname-signup').value.trim();
+    const first_name = document.querySelector('#firstname-signup').value.trim();
+    const last_name = document.querySelector('#lastname-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
-    if (firstname && lastname && password) {
-        const response = await fetch('/api/employees/login', {
+    if (first_name && last_name && password) {
+        const response = await fetch('/api/employees', {
             method: 'post',
             body: JSON.stringify({
-                firstname,
-                lastname,
+                first_name,
+                last_name,
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/login');
+            console.log('success');
         } else {
             alert(response.statusText);
         }
