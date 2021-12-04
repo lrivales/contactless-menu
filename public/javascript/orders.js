@@ -4,7 +4,7 @@ async function deleteCardHandler(event) {
     const orderId = (event.target.dataset.orderid);
     const orderCard = document.querySelector(`[data-ordercard="${orderId}"]`)
 
-    const response = await fetch('http://localhost:3001/api/orders/' + orderId, {
+    const response = await fetch('/api/orders/' + orderId, {
         method: 'DELETE',
         headers: {
             'Content-type': 'application/json'
