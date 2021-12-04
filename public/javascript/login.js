@@ -45,7 +45,7 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/login');
+            // document.location.replace('/login');
             console.log('success');
         } else {
             alert(response.statusText);
@@ -53,4 +53,4 @@ async function signupFormHandler(event) {
     }
 }
 
-document.querySelector('.signup-form').addEventListener('submit', loginFormHandler);
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
